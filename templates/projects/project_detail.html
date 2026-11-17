@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ project.title }} — Кейс студии{% endblock %}
+{% block meta_description %}{{ project.short_description }}{% endblock %}
+
+{% block content %}
+<article class="pt-12 pb-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Breadcrumbs -->
+        <nav class="flex items-center space-x-2 text-xs text-slate-400 mb-8">
+            <a href="{% url 'home' %}" class="hover:text-white transition-colors">Главная</a>
+            <span>/</span>
+            <a href="{% url 'projects:list' %}" class="hover:text-white transition-colors">Портфолио</a>
+            <span>/</span>
+            <span class="text-slate-200 truncate">{{ project.title }}</span>
+        </nav>
+
+        <!-- Header -->
+        <div class="space-y-4 mb-10">
+            {% if project.category %}
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                {{ project.category.name }}
+            </span>
+            {% endif %}
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                {{ project.title }}
+            </h1>
+            <p class="text-lg text-slate-300 leading-relaxed max-w-3xl">
+                {{ project.short_description }}
+            </p>
+        </div>
+
+        <!-- Meta Info Bar -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 rounded-2xl bg-slate-900/60 border border-slate-800 mb-12">
+            <div>
+                <span class="text-xs text-slate-400 block uppercase font-medium">Клиент</span>
+                <span class="text-sm font-semibold text-white mt-0.5 block">{{ project.client|default:"Конфиденциально" }}</span>
+            </div>
+            <div>
+                <span class="text-xs text-slate-400 block uppercase font-medium">Год проекта</span>
+                <span class="text-sm font-semibold text-white mt-0.5 block">{{ project.year }}</span>
+            </div>
+            <div>
+                <span class="text-xs text-slate-400 block uppercase font-medium">Категория</span>
+                <span class="text-sm font-semibold text-white mt-0.5 block">{{ project.category.name|default:"Инжиниринг" }}</span>
+            </div>
+            <div>
+                <span class="text-xs text-slate-400 block uppercase font-medium">Ссылка</span>
+                {% if project.live_url %}
+                    <a href="{{ project.live_url }}" target="_blank" rel="noopener" class="text-sm font-semibold text-indigo-400 hover:text-indigo-300 inline-flex items-center mt-0.5">
+                        <span>Открыть сайт</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square ml-1.5 text-xs"></i>
+                    </a>
+                {% else %}
+                    <span class="text-sm font-medium text-slate-400 mt-0.5 block">Внутренний сервис</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Hero Cover Image -->
+        <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 mb-12 shadow-2xl">
+            {% if project.cover_image %}
+                <img src="{{ project.cover_image.url }}" alt="{{ project.title }}" class="w-full h-auto object-cover">
+            {% else %}
+                <div class="aspect-video w-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950/60 text-slate-500">
+                    <i class="fa-solid fa-layer-group text-6xl mb-3 text-indigo-500/30"></i>
+                    <span class="text-sm uppercase tracking-wider font-medium text-slate-400">Обложка кейса</span>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Case Content / Details -->
+        <div class="prose prose-invert max-w-none space-y-6 text-slate-300 leading-relaxed text-base">
+            <h2 class="text-2xl font-bold text-white mb-4">О проекте и задачах</h2>
+            <div class="whitespace-pre-line">
+                {{ project.description }}
+            </div>
+        </div>
+
+        <!-- Technologies Stack -->
+        {% if project.technologies.all %}
+        <div class="mt-12 pt-8 border-t border-slate-800">
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">Стек технологий</h3>
+            <div class="flex flex-wrap gap-2.5">
+                {% for tech in project.technologies.all %}
+                <span class="inline-flex items-center px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-sm font-medium text-slate-200">
+                    {% if tech.icon_class %}<i class="{{ tech.icon_class }} mr-2 text-indigo-400"></i>{% endif %}
+                    {{ tech.name }}
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Gallery (if available) -->
+        {% if project.gallery_images.all %}
+        <div class="mt-16 pt-8 border-t border-slate-800">
+            <h3 class="text-2xl font-bold text-white mb-6">Галерея экранов</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {% for item in project.gallery_images.all %}
+                <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-900">
+                    <img src="{{ item.image.url }}" alt="{{ item.caption|default:project.title }}" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+                    {% if item.caption %}
+                        <div class="p-3 bg-slate-900/90 text-xs text-slate-400 text-center">
+                            {{ item.caption }}
+                        </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Related Projects -->
+        {% if related_projects %}
+        <div class="mt-20 pt-12 border-t border-slate-800">
+            <h3 class="text-2xl font-bold text-white mb-8">Другие проекты в этой категории</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {% for rel in related_projects %}
+                <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-colors">
+                    <h4 class="font-bold text-white hover:text-indigo-400 transition-colors">
+                        <a href="{% url 'projects:detail' slug=rel.slug %}">{{ rel.title }}</a>
+                    </h4>
+                    <p class="text-xs text-slate-400 mt-2 line-clamp-2">{{ rel.short_description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Navigation Buttons -->
+        <div class="mt-16 pt-8 border-t border-slate-800 flex items-center justify-between">
+            <a href="{% url 'projects:list' %}" class="inline-flex items-center text-sm font-semibold text-slate-400 hover:text-white transition-colors">
+                <i class="fa-solid fa-arrow-left mr-2 text-xs"></i>
+                <span>Все кейсы</span>
+            </a>
+            <a href="{% url 'contact_page' %}" class="inline-flex items-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 transition-colors">
+                <span>Обсудить похожий проект</span>
+                <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+            </a>
+        </div>
+
+    </div>
+</article>
+{% endblock %}

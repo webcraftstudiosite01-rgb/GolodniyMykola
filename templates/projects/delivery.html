@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Миколина доставка страв та самовивіз (-10%) | Ресторан «Голодний Микола» Львів{% endblock %}
+{% block meta_description %}Доставка автентичних галицьких страв по Львову. Жива форель з печі, баноші, вареники, бограч, пиво «Кумпель». Знижка 10% на самовивіз з ресторану!{% endblock %}
+
+{% block content %}
+
+<!-- Header Hero -->
+<section class="py-20 bg-[#0e1411] border-b border-amber-900/30 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-2 block">
+            <i class="fa-solid fa-truck-fast mr-2"></i>Швидко, гаряче та смачно
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-black text-white mb-4">
+            Миколина доставка страв <br class="hidden sm:inline">
+            <span class="text-amber-400">по Львову та передмістю</span>
+        </h1>
+        <p class="text-stone-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed mb-8">
+            Улюблені галицькі страви з печі просто до Вашого столу. А при самовивозі з ресторану — автоматична приємна знижка 10%!
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4">
+            <a href="{% url 'menu' %}" class="px-8 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-sm uppercase tracking-wider shadow-xl shadow-amber-500/20 transition-all flex items-center space-x-2">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Обрати страви в меню</span>
+            </a>
+            <button onclick="openCartModal()" class="px-8 py-3.5 rounded-xl bg-stone-900 border border-amber-500/40 hover:bg-stone-800 text-amber-400 font-bold text-sm uppercase tracking-wider transition-all flex items-center space-x-2">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span>Відкрити кошик</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Terms & Zones -->
+<section class="py-20 bg-[#0b100d]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+
+            <!-- Card 1: Green Zone -->
+            <div class="glass-card p-8 rounded-3xl border border-emerald-500/30 text-center space-y-4">
+                <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 text-2xl flex items-center justify-center mx-auto">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3 class="text-xl font-serif font-bold text-white">Зелена зона</h3>
+                <p class="text-xs text-stone-400">До 10 км від ресторану (Франківський, Сихівський, частково Галицький райони)</p>
+                <div class="p-3 rounded-xl bg-stone-900 border border-stone-800">
+                    <p class="text-xs text-stone-400">Безкоштовна доставка:</p>
+                    <p class="text-lg font-serif font-bold text-emerald-400">від 1 700 грн</p>
+                </div>
+            </div>
+
+            <!-- Card 2: Yellow Zone -->
+            <div class="glass-card p-8 rounded-3xl border border-amber-500/30 text-center space-y-4">
+                <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/40 text-amber-400 text-2xl flex items-center justify-center mx-auto">
+                    <i class="fa-solid fa-route"></i>
+                </div>
+                <h3 class="text-xl font-serif font-bold text-white">Жовта зона</h3>
+                <p class="text-xs text-stone-400">Понад 10 км від ресторану (Шевченківський, Личаківський райони, передмістя)</p>
+                <div class="p-3 rounded-xl bg-stone-900 border border-stone-800">
+                    <p class="text-xs text-stone-400">Безкоштовна доставка:</p>
+                    <p class="text-lg font-serif font-bold text-amber-400">від 2 200 грн</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Takeaway Discount -->
+            <div class="glass-card p-8 rounded-3xl border border-amber-400/40 text-center space-y-4 bg-gradient-to-b from-amber-950/20 to-transparent">
+                <div class="w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-500 text-amber-300 text-2xl flex items-center justify-center mx-auto">
+                    <i class="fa-solid fa-gift"></i>
+                </div>
+                <h3 class="text-xl font-serif font-bold text-white">Самовивіз (-10%)</h3>
+                <p class="text-xs text-stone-400">Замовляйте онлайн та забирайте страви з ресторану на вул. Стрийській, 352</p>
+                <div class="p-3 rounded-xl bg-stone-900 border border-stone-800">
+                    <p class="text-xs text-stone-400">Гарантована знижка:</p>
+                    <p class="text-lg font-serif font-bold text-amber-400">-10% на все замовлення</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- How It Works Steps -->
+        <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-stone-800 mb-20">
+            <h3 class="text-2xl font-serif font-bold text-white text-center mb-10">Як замовити доставку у 3 простих кроки</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="space-y-3">
+                    <div class="w-12 h-12 rounded-full bg-amber-500 text-stone-950 font-black text-lg flex items-center justify-center mx-auto">1</div>
+                    <h4 class="font-bold text-base text-white">Оберіть страви в онлайн-меню</h4>
+                    <p class="text-xs text-stone-400">Натискайте «В кошик» біля будь-якої страви чи напою.</p>
+                </div>
+                <div class="space-y-3">
+                    <div class="w-12 h-12 rounded-full bg-amber-500 text-stone-950 font-black text-lg flex items-center justify-center mx-auto">2</div>
+                    <h4 class="font-bold text-base text-white">Вкажіть адресу або час самовивозу</h4>
+                    <p class="text-xs text-stone-400">Оберіть доставку або самовивіз зі знижкою 10%.</p>
+                </div>
+                <div class="space-y-3">
+                    <div class="w-12 h-12 rounded-full bg-amber-500 text-stone-950 font-black text-lg flex items-center justify-center mx-auto">3</div>
+                    <h4 class="font-bold text-base text-white">Отримайте гарячі страви</h4>
+                    <p class="text-xs text-stone-400">Кур'єр доставить замовлення у термосумках або заберіть без черги.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Delivery Dishes -->
+        <div>
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-400 block mb-1">Шеф рекомендує</span>
+                    <h3 class="text-2xl font-serif font-bold text-white">Популярні страви для замовлення додому</h3>
+                </div>
+                <a href="{% url 'menu' %}" class="text-xs font-bold text-amber-400 uppercase tracking-wider hover:underline">
+                    Все меню →
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {% for dish in featured_dishes %}
+                <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between group p-4">
+                    <div class="relative aspect-[16/10] rounded-2xl overflow-hidden bg-stone-900 mb-4">
+                        {% if dish.image_url %}
+                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        {% else %}
+                        <div class="w-full h-full flex items-center justify-center text-stone-700 bg-stone-950">
+                            <i class="fa-solid fa-utensils text-3xl"></i>
+                        </div>
+                        {% endif %}
+                        <div class="absolute top-2 right-2 px-2.5 py-1 rounded-lg bg-stone-950/80 backdrop-blur-md text-stone-300 text-xs font-semibold">
+                            {{ dish.weight }}
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-[10px] uppercase font-bold text-amber-400 block mb-1">{{ dish.category.name }}</span>
+                        <h4 class="text-base font-serif font-bold text-white mb-2">{{ dish.name }}</h4>
+                        <p class="text-xs text-stone-400 line-clamp-2 mb-4">{{ dish.description }}</p>
+                    </div>
+                    <div class="pt-3 border-t border-stone-800 flex items-center justify-between">
+                        <span class="text-xl font-serif font-bold text-amber-400">{{ dish.price|floatformat:0 }} грн</span>
+                        <button onclick="addToCart('{{ dish.id }}', '{{ dish.name|escapejs }}', '{{ dish.price }}', '{{ dish.weight|escapejs }}', '{{ dish.image_url|escapejs }}')" class="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs uppercase tracking-wider transition-colors shadow flex items-center space-x-1.5">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>В кошик</span>
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

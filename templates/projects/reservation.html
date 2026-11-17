@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Бронювання столика та залів — Ресторан «Голодний Микола» Львів{% endblock %}
+{% block meta_description %}Онлайн-бронювання столиків та банкетних залів у ресторані галицької кухні «Голодний Микола». Зали до 230 гостей, живий камін, тераса біля озера зі ставком з фореллю.{% endblock %}
+
+{% block content %}
+
+<!-- Header Hero -->
+<section class="py-16 bg-[#0e1411] border-b border-amber-900/30 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-2 block">
+            <i class="fa-solid fa-calendar-check mr-2"></i>Запрошуємо до господи
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-black text-white mb-4">
+            Бронювання столика чи зали в <br class="hidden sm:inline">
+            <span class="text-amber-400">«Голодному Миколі»</span>
+        </h1>
+        <p class="text-stone-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+            Оберіть бажану дату, залу та кількість гостей. Адміністратор зателефонує Вам для остаточного узгодження деталей.
+        </p>
+    </div>
+</section>
+
+<!-- Reservation Page Content -->
+<section class="py-20 bg-[#0b100d]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+
+            <!-- Col 1: Halls Overview & Promotions -->
+            <div class="space-y-6">
+                <div class="glass-card p-6 rounded-3xl border border-stone-800 space-y-4">
+                    <h3 class="text-base font-serif font-bold text-amber-400 uppercase tracking-wider">
+                        <i class="fa-solid fa-gift mr-2"></i>Вигідні переваги
+                    </h3>
+                    <ul class="space-y-3 text-xs text-stone-300">
+                        <li class="flex items-start space-x-2">
+                            <i class="fa-solid fa-check text-amber-500 mt-0.5"></i>
+                            <span><strong>-15% на банкети</strong> з понеділка по четвер</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i class="fa-solid fa-check text-amber-500 mt-0.5"></i>
+                            <span><strong>Почесті для Микол:</strong> подушка, частування пивом чи самогонкою</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i class="fa-solid fa-check text-amber-500 mt-0.5"></i>
+                            <span><strong>Безкоштовна риболовля:</strong> вудочки та снасті для гостей</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i class="fa-solid fa-check text-amber-500 mt-0.5"></i>
+                            <span><strong>Дитяча кімната з нянею:</strong> малюки під наглядом щодня</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Halls cards -->
+                <div class="space-y-3">
+                    <h4 class="text-xs uppercase tracking-widest text-stone-400 font-bold px-2">Локації для бронювання</h4>
+                    {% for h in halls %}
+                    <div class="glass-card p-4 rounded-2xl border border-stone-800 flex items-center space-x-3.5">
+                        <img src="{{ h.image }}" alt="{{ h.name }}" class="w-14 h-14 rounded-xl object-cover border border-stone-700 flex-shrink-0">
+                        <div>
+                            <h5 class="text-sm font-bold text-white">{{ h.name }}</h5>
+                            <p class="text-xs text-amber-400 font-semibold">{{ h.capacity }} • {{ h.floor }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Col 2: The Booking Form (2 cols) -->
+            <div class="lg:col-span-2 glass-panel p-8 sm:p-12 rounded-3xl border border-amber-500/30 shadow-2xl">
+                <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-2">Форма бронювання</h2>
+                <p class="text-xs text-stone-400 mb-8">Будь ласка, вкажіть контактні дані та побажання.</p>
+
+                <form method="post" action="{% url 'reservation' %}" class="space-y-5">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Ваше ім’я *</label>
+                            {{ form.name }}
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Номер телефону *</label>
+                            {{ form.phone }}
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Дата *</label>
+                            {{ form.date }}
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Час *</label>
+                            {{ form.time }}
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Кількість гостей *</label>
+                            {{ form.guests_count }}
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Зала ресторану</label>
+                            {{ form.hall }}
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Формат свята</label>
+                            {{ form.event_type }}
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex items-center space-x-3">
+                        {{ form.has_mykola }}
+                        <label for="{{ form.has_mykola.id_for_label }}" class="text-xs text-amber-200 cursor-pointer">
+                            Серед гостей є <strong>Микола</strong> (фірмова подушка для Миколи, келих пива або самогонка від господаря!)
+                        </label>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-stone-300 mb-2">Особливі побажання</label>
+                        {{ form.special_requests }}
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-300 text-stone-950 font-black text-sm uppercase tracking-wider shadow-xl shadow-amber-500/25 transition-all">
+                        Надіслати заявку на бронювання
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

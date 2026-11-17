@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}404 — Сторінку не знайдено | Ресторан «Голодний Микола»{% endblock %}
+
+{% block content %}
+<section class="py-32 text-center bg-[#0b100d]">
+    <div class="max-w-md mx-auto px-4 space-y-6">
+        <div class="text-8xl font-serif font-black bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+            404
+        </div>
+        <h1 class="text-3xl font-serif font-bold text-white">Ой, цієї сторінки нема у господі!</h1>
+        <p class="text-sm text-stone-400">
+            Здається, адреса змінилася, або шеф-кухар саме чаклує над новим рецептом.
+        </p>
+        <div class="pt-4 flex justify-center gap-4">
+            <a href="{% url 'home' %}" class="inline-flex items-center px-6 py-3 rounded-xl text-sm font-bold text-stone-950 bg-amber-500 hover:bg-amber-400 transition-colors shadow">
+                <i class="fa-solid fa-house mr-2 text-xs"></i>
+                <span>На головну</span>
+            </a>
+            <a href="{% url 'menu' %}" class="inline-flex items-center px-6 py-3 rounded-xl text-sm font-bold text-white bg-stone-900 border border-stone-700 hover:border-amber-400 transition-colors">
+                <i class="fa-solid fa-utensils mr-2 text-xs text-amber-500"></i>
+                <span>До меню страв</span>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

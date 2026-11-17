@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Хто ми — Історія та традиції | Ресторан «Голодний Микола» Львів{% endblock %}
+{% block meta_description %}Історія ресторану «Голодний Микола» — найбільшого закладу галицької кухні у світі. Господар Микола Миколайович, традиції зустрічі гостей, Музей Микол, жива форель та броварня.{% endblock %}
+
+{% block content %}
+
+<!-- Header Hero -->
+<section class="py-20 bg-[#0e1411] border-b border-amber-900/30 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-amber-400 mb-2 block">
+            <i class="fa-solid fa-landmark mr-2"></i>Галицька гостинність крізь покоління
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-black text-white mb-6">
+            Хто ми: душа та історія <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500">
+                «Голодного Миколи»
+            </span>
+        </h1>
+        <p class="text-stone-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
+            Найбільший у світі ресторан галицької кухні з власною пекарнею, броварнею «Кумпель», подвійним ставком з живою фореллю, дитячою фермою та гостинними традиціями господаря Миколи Миколайовича.
+        </p>
+    </div>
+</section>
+
+<!-- Story Content Sections -->
+<section class="py-20 bg-[#0b100d]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+
+        <!-- Block 1: The Legend and Gospodar -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <span class="px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider inline-flex items-center">
+                    <i class="fa-solid fa-hand-holding-hand mr-2"></i>Традиція зустрічі
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white leading-tight">
+                    Господар Микола Миколайович та щира галицька чарка
+                </h2>
+                <p class="text-stone-300 text-base leading-relaxed">
+                    На вході у наш ресторан гостей традиційно зустрічає господар — пан <strong>Микола Миколайович</strong>. Кожен гість із порога відчуває тепло справжньої львівської господи: Вас обов'язково почастують чарочкою фірмової господаревої самогонки та галицькими смаколиками.
+                </p>
+                <p class="text-stone-400 text-sm leading-relaxed">
+                    А для гостей з іменем <strong>Микола</strong> тут діє особливий почесний статус: іменна подушка <em>«М’яке місце для Миколи»</em>, безкоштовне частування келихом пива «Кумпель», свіжим лимонадом або чаркою від господаря, а також можливість увіковічнити свій портрет в унікальному <strong>Музеї Микол</strong>.
+                </p>
+                <div class="p-5 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex items-center space-x-4">
+                    <i class="fa-solid fa-quote-left text-3xl text-amber-400 flex-shrink-0"></i>
+                    <p class="text-xs text-amber-200 italic">
+                        «Ми створили місце, куди хочеться приходити з родиною, друзями та дітьми. Де немає метушні, а є запах печі, смак свіжої форелі та щира посмішка!»
+                    </p>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="rounded-3xl overflow-hidden border border-amber-500/30 shadow-2xl aspect-[4/3]">
+                    <img src="{% static 'images/restaurant_ext.jpg' %}" alt="Ресторан Голодний Микола Львів" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-6 -right-6 p-6 rounded-2xl bg-stone-900 border border-amber-500/40 shadow-xl hidden sm:block max-w-xs">
+                    <p class="text-amber-400 font-serif font-bold text-lg mb-1">Львівська гостинність</p>
+                    <p class="text-stone-400 text-xs">вул. Стрийська, 352 • Щодня з 11:00 до 22:00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 2: Live Trout Lake -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1 relative">
+                <div class="rounded-3xl overflow-hidden border border-amber-500/30 shadow-2xl aspect-[4/3]">
+                    <img src="{% static 'images/restaurant_lake.jpg' %}" alt="Подвійний ставок з фореллю" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="order-1 lg:order-2 space-y-6">
+                <span class="px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider inline-flex items-center">
+                    <i class="fa-solid fa-fish mr-2"></i>Природний ексклюзив
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white leading-tight">
+                    Подвійний ставок з живою карпатською фореллю
+                </h2>
+                <p class="text-stone-300 text-base leading-relaxed">
+                    Гордість «Голодного Миколи» — унікальний проточний подвійний басейн-ставок, одна частина якого розташована на свіжому повітрі серед мальовничого саду, а інша — безпосередньо у внутрішній залі ресторану!
+                </p>
+                <p class="text-stone-400 text-sm leading-relaxed">
+                    У ставку плаває добірна карпатська форель (пструг). Кожен гість може взяти вудочку та виловити рибу власноруч. Наші шеф-кухарі миттєво підсмажать її на деревному вугіллі, запечуть з пряними карпатськими травами чи підкоптять до Вашого столу.
+                </p>
+                <div class="pt-2">
+                    <button onclick="openBookingModal('Головна зала зі ставком')" class="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs uppercase tracking-wider transition-colors shadow">
+                        Забронювати стіл біля озера
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 3: Brewery & Bakery -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <span class="px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider inline-flex items-center">
+                    <i class="fa-solid fa-fire mr-2"></i>Крафтове виробництво
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white leading-tight">
+                    Власна пекарня та броварня пива «Кумпель»
+                </h2>
+                <p class="text-stone-300 text-base leading-relaxed">
+                    Ми не купуємо напівфабрикатів. На території комплексу діє власна пекарня з автентичними печами: хліб на натуральній заквасці, галицькі пироги, булочки та пляцки випікаються щоранку.
+                </p>
+                <p class="text-stone-400 text-sm leading-relaxed">
+                    Поруч працює броварня легендарного львівського пива «Кумпель» — нефільтрованого, звареного за класичною чесько-німецькою технологією на найкращому солоді та хмелі. Також ми готуємо живий домашній квас, морси та традиційні настоянки на карпатських травах і ягодах.
+                </p>
+                <div class="pt-2">
+                    <a href="{% url 'menu' %}#cat-napoi" class="px-6 py-3 rounded-xl bg-stone-900 border border-stone-700 hover:border-amber-400 text-white font-bold text-xs uppercase tracking-wider transition-colors inline-block">
+                        Пивна карта та напої
+                    </a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="rounded-3xl overflow-hidden border border-amber-500/30 shadow-2xl aspect-[4/3]">
+                    <img src="{% static 'images/shop_craft.jpg' %}" alt="Крамничка крафтових продуктів" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+
+        <!-- Block 4: Kids World -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1 relative">
+                <div class="rounded-3xl overflow-hidden border border-amber-500/30 shadow-2xl aspect-[4/3]">
+                    <img src="{% static 'images/kids_farm.jpg' %}" alt="Дитячий майданчик та ферма" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="order-1 lg:order-2 space-y-6">
+                <span class="px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider inline-flex items-center">
+                    <i class="fa-solid fa-children mr-2"></i>Турбота про батьків
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white leading-tight">
+                    «Відпочиваючи з дітьми — відпочиньте від дітей!»
+                </h2>
+                <p class="text-stone-300 text-base leading-relaxed">
+                    Ми знаємо, як важливо батькам мати змогу спокійно насолодитися бесідою, келихом доброго напою та смачною вечерею.
+                </p>
+                <p class="text-stone-400 text-sm leading-relaxed">
+                    Для Ваших малюків створено казкове містечко: безпечний ігровий майданчик з канатами та гойдалками, сезонна контактна міні-ферма «Хатка для звірятка» з кізоньками та свійськими птахами, внутрішня ігрова зала з іграшками, розмальовками та професійними нянями. А спеціальне дитяче меню «Для Миколок» порадує навіть найвибагливіших маленьких гурманів!
+                </p>
+                <div class="pt-2">
+                    <a href="{% url 'service_detail' slug='simeinyi-vidpochynok-z-ditmy' %}" class="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs uppercase tracking-wider transition-colors inline-block shadow">
+                        Детальніше про дитячий відпочинок
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Photo Gallery Grid -->
+<section class="py-20 bg-[#0e1411]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+            <span class="text-xs uppercase tracking-widest text-amber-400 font-bold block mb-2">Атмосфера закладу</span>
+            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white">Фотогалерея ресторану</h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div class="rounded-2xl overflow-hidden aspect-square border border-stone-800 group">
+                <img src="{% static 'images/hall_urochysta.jpeg' %}" alt="Урочиста зала" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="rounded-2xl overflow-hidden aspect-square border border-stone-800 group">
+                <img src="{% static 'images/hall_kamin.jpeg' %}" alt="Зала з каміном" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="rounded-2xl overflow-hidden aspect-square border border-stone-800 group">
+                <img src="{% static 'images/hall_interior.jpeg' %}" alt="Інтер'єр" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="rounded-2xl overflow-hidden aspect-square border border-stone-800 group">
+                <img src="{% static 'images/terrace.jpg' %}" alt="Тераса біля води" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="rounded-2xl overflow-hidden aspect-square border border-stone-800 group">
+                <img src="{% static 'images/celebration.jpg' %}" alt="Бенкети" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="rounded-2xl overflow-hidden aspect-square border border-stone-800 group">
+                <img src="{% static 'images/dinner_ambiance.jpg' %}" alt="Вечірня атмосфера" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="rounded-2xl overflow-hidden aspect-square border border-stone-800 group">
+                <img src="{% static 'images/corporate_hall.jpg' %}" alt="Корпоративи" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="rounded-2xl overflow-hidden aspect-square border border-stone-800 group">
+                <img src="{% static 'images/shop_craft.jpg' %}" alt="Крамниця крафту" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+        </div>
+
+        <div class="text-center mt-12">
+            <button onclick="openBookingModal()" class="px-8 py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-sm uppercase tracking-wider shadow-xl shadow-amber-500/20 transition-all hover:scale-105">
+                Завітайте до нас у гості
+            </button>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
